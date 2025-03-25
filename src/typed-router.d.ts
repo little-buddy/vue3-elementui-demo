@@ -57,6 +57,7 @@ declare module 'vue-router/auto-routes' {
     '//salesManage/salesback': RouteRecordInfo<'//salesManage/salesback', '/salesManage/salesback', Record<never, never>, Record<never, never>>,
     '//salesManage/salesout': RouteRecordInfo<'//salesManage/salesout', '/salesManage/salesout', Record<never, never>, Record<never, never>>,
     '//salesManage/salesSheet': RouteRecordInfo<'//salesManage/salesSheet', '/salesManage/salesSheet', Record<never, never>, Record<never, never>>,
+    '//usercenter': RouteRecordInfo<'//usercenter', '/usercenter', Record<never, never>, Record<never, never>>,
     '/login': RouteRecordInfo<'/login', '/login', Record<never, never>, Record<never, never>>,
   }
 }

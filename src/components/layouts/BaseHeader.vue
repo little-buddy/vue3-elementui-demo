@@ -5,7 +5,6 @@ import { useFullscreen } from '@vueuse/core'
 import { useRouter } from 'vue-router'
 
 import { repository } from '~/../package.json'
-import logo from '~/assets/imgs/login-icon.png'
 
 import { toggleDark } from '~/composables'
 
@@ -92,30 +91,7 @@ function onHandleSend() {
 
       <HeaderMessage />
 
-      <el-dropdown trigger="click">
-        <span class="el-dropdown-link flex cursor-pointer items-center space-x-2">
-
-          <el-image :src="logo" fit="fill" class="h-[24px] w-[24px]" />
-          <span>
-            用户名
-          </span>
-
-          <el-icon class="el-icon--right"><ArrowDown /></el-icon>
-        </span>
-        <template #dropdown>
-          <el-dropdown-menu>
-            <el-dropdown-item :icon="Plus">
-              账号信息
-            </el-dropdown-item>
-            <el-dropdown-item :icon="CirclePlusFilled">
-              清除缓存
-            </el-dropdown-item>
-            <el-dropdown-item :icon="CirclePlus" divided>
-              退出登录
-            </el-dropdown-item>
-          </el-dropdown-menu>
-        </template>
-      </el-dropdown>
+      <HeaderUser />
       <el-tooltip content="切换主题">
         <el-button
           link

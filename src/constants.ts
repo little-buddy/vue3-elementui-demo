@@ -34,6 +34,7 @@ import {
   Ticket,
   TopRight,
   User,
+  UserFilled,
   Wallet,
   Warning,
   WindPower,
@@ -122,6 +123,11 @@ navConf.slice().concat(
       icon: Message,
       name: '消息中心',
       index: '/messagecenter',
+    },
+    {
+      icon: User,
+      name: '账号信息',
+      index: '/usercenter',
     },
   ] as any,
 ).forEach((nav) => {

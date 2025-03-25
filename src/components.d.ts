@@ -45,6 +45,7 @@ declare module 'vue' {
     ElText: typeof import('element-plus/es')['ElText']
     ElTooltip: typeof import('element-plus/es')['ElTooltip']
     HeaderMessage: typeof import('./components/bussiness/HeaderMessage.vue')['default']
+    HeaderUser: typeof import('./components/bussiness/HeaderUser.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     LoginForm: typeof import('./components/LoginForm.vue')['default']
     Logos: typeof import('./components/Logos.vue')['default']
