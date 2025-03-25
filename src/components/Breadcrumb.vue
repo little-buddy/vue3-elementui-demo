@@ -36,13 +36,35 @@ watch(() => route.path, sureBreads)
 <!-- 仅展示不跳转 -->
 <template>
   <el-breadcrumb :separator-icon="ArrowRight">
-    <el-breadcrumb-item v-for="bread in breads" :key="bread.name">
-      <div class="flex items-center space-x-2">
-        <el-icon> <Component :is="bread.icon" />  </el-icon>
-        <span>
-          {{ bread.name }}
-        </span>
-      </div>
-    </el-breadcrumb-item>
+    <transition-group name="list" tag="div">
+      <el-breadcrumb-item v-for="bread in breads" :key="bread.name">
+        <div class="flex items-center space-x-2">
+          <el-icon> <Component :is="bread.icon" />  </el-icon>
+          <span>
+            {{ bread.name }}
+          </span>
+        </div>
+      </el-breadcrumb-item>
+    </transition-group>
   </el-breadcrumb>
 </template>
+
+<style>
+.list-move, /* 对移动中的元素应用的过渡 */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* 确保将离开的元素从布局流中删除
+  以便能够正确地计算移动的动画。 */
+.list-leave-active {
+  position: absolute;
+}
+</style>
