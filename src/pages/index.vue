@@ -13,7 +13,7 @@
     <div class="h-full">
       <BaseSide />
     </div>
-    <div w="full" py="4">
+    <div w="full" class="bg-[#f6f8f9]">
       <RouterView />
     </div>
   </div>

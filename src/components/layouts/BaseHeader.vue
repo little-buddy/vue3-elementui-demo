@@ -27,7 +27,7 @@ function onHandleSend() {
 </script>
 
 <template>
-  <div class="bg-primary h-[56px] flex justify-between px-[24px]">
+  <div class="bg-primary h-[60px] flex justify-between px-[24px]">
     <div class="flex items-center justify-center gap-2">
       <div class="flex items-center space-x-2">
         <div class="h-10 w-10 bg-[length:100%_100%] bg-[url(~/assets/imgs/login-icon.png)]" />

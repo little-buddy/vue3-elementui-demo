@@ -26,8 +26,6 @@ function sureBreads(path: string) {
     res.push({ ...info })
   }
 
-  console.log(res)
-
   breads.value = res
 }
 
