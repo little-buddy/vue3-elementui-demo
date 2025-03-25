@@ -33,7 +33,7 @@
         <!-- tabs -->
         <el-tabs>
           <el-tab-pane label="账号登录">
-            <LoginForm/>
+            <LoginForm />
           </el-tab-pane>
         </el-tabs>
       </div>
