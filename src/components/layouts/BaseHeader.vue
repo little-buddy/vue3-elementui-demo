@@ -65,19 +65,8 @@ const { toggle } = useFullscreen()
           </el-icon>
         </el-button>
       </el-tooltip>
-      <el-tooltip content="消息">
-        <el-button link class="relative mr-4! hover:text-white!">
-          <el-icon>
-            <ChatDotRound />
-          </el-icon>
-          <el-tag type="danger" size="small" effect="dark" round hit class="absolute left-[30%] top-[-30%] border-white!">
-            <span class="font-bold">
 
-              11
-            </span>
-          </el-tag>
-        </el-button>
-      </el-tooltip>
+      <HeaderMessage />
 
       <el-dropdown trigger="click">
         <span class="el-dropdown-link flex cursor-pointer items-center space-x-2">

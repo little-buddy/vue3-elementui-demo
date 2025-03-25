@@ -24,6 +24,25 @@ html {
 p {
   margin: 0;
 }
+.ep-drawer__header {
+  font-weight: bold;
+}
+
+.ep-drawer__body-nopadding .ep-drawer__body {
+  padding: 0;
+}
+.ep-box__border {
+  border-color: var(--ep-menu-border-color);
+}
+
+.ep-box__card {
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.ep-box__card:hover {
+  background-color: var(--ep-color-primary-light-9);
+}
 
 #app {
   text-align: center;
