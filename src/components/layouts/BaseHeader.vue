@@ -2,8 +2,7 @@
 import { ArrowDown, ChatDotRound, Connection, FullScreen, Refresh } from '@element-plus/icons-vue'
 
 import { useFullscreen } from '@vueuse/core'
-
-import { RouterLink } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 import { repository } from '~/../package.json'
 import logo from '~/assets/imgs/login-icon.png'
@@ -11,6 +10,21 @@ import logo from '~/assets/imgs/login-icon.png'
 import { toggleDark } from '~/composables'
 
 const { toggle } = useFullscreen()
+
+const router = useRouter()
+
+function onHandleTodo() {
+  router.push('/handletodo')
+}
+function onHandleCommit() {
+  router.push('/handlecommit')
+}
+function onHandleDone() {
+  router.push('/handledone')
+}
+function onHandleSend() {
+  router.push('/handlesend')
+}
 </script>
 
 <template>
@@ -36,24 +50,24 @@ const { toggle } = useFullscreen()
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>
-                <RouterLink to="/handletodo">
+                <div @click="onHandleTodo()">
                   待我处理
-                </RouterLink>
+                </div>
               </el-dropdown-item>
               <el-dropdown-item>
-                <RouterLink to="/handlecommit">
+                <div @click="onHandleCommit()">
                   我提交的
-                </RouterLink>
+                </div>
               </el-dropdown-item>
               <el-dropdown-item>
-                <RouterLink to="/handlesend">
+                <div @click="onHandleSend()">
                   抄送我的
-                </RouterLink>
+                </div>
               </el-dropdown-item>
               <el-dropdown-item>
-                <RouterLink to="/handledone">
+                <div @click="onHandleDone()">
                   审批过的
-                </RouterLink>
+                </div>
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
