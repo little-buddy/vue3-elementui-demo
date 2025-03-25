@@ -1,5 +1,6 @@
 <template>
   <div>
-    Navigation 2
+    报价单
   </div>
 </template>
+

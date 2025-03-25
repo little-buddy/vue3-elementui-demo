@@ -1,5 +1,5 @@
 <template>
   <div>
-    Item One
+    应收账款-销售出库
   </div>
 </template>
