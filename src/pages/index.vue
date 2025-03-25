@@ -6,7 +6,7 @@
     </div>
     <div class="flex flex-1 items-center border-0 border-b-1 border-[#dcdfe6] border-solid pl-[20px]">
       <!-- 这个面包屑的功能有点难搞的 -->
-      面包屑
+      <Breadcrumb/>
     </div>
   </div>
   <div class="main-container flex">
