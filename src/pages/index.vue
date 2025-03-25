@@ -1,15 +1,18 @@
 <template>
   <BaseHeader />
-  <div class="h-[40px] w-full flex">
-    <div class="w-[280px] flex items-center border-0 border-b-1 border-r-1 border-[#dcdfe6] border-solid pl-[20px] font-bold">
+  <div class="h-[48px] w-full flex">
+    <div class="w-[240px] flex items-center border-0 border-b-1 border-r-1 border-[#dcdfe6] border-solid pl-[20px] font-bold">
       工作台
     </div>
     <div class="flex flex-1 items-center border-0 border-b-1 border-[#dcdfe6] border-solid pl-[20px]">
+      <!-- 这个面包屑的功能有点难搞的 -->
       面包屑
     </div>
   </div>
   <div class="main-container flex">
-    <BaseSide />
+    <div class="h-full">
+      <BaseSide />
+    </div>
     <div w="full" py="4">
       <RouterView />
     </div>

@@ -106,8 +106,7 @@ const MenuData = reactive([{
   <el-menu
     router
     default-active="1"
-    class="el-menu-vertical-demo w-[280px]"
-    unique-opened
+    class="el-menu-vertical-demo 0px] h-full w-[240px] overflow-scroll"
     @open="handleOpen"
     @close="handleClose"
   >

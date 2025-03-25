@@ -5,46 +5,16 @@ import { toggleDark } from '~/composables'
 </script>
 
 <template>
-  <el-menu class="el-menu-demo" mode="horizontal" :ellipsis="false" router>
+  <el-menu class="el-menu-demo bg-primary!" mode="horizontal" :ellipsis="false" router>
     <el-menu-item index="/">
       <div class="flex items-center justify-center gap-2">
-        <div class="text-xl" i-ep-element-plus />
-        <span>Element Plus</span>
+        <div class="flex items-center space-x-2">
+          <div class="h-10 w-10 bg-[length:100%_100%] bg-[url(~/assets/imgs/login-icon.png)]" />
+          <p class="text-[24px] text-white font-bold">
+            美乐数字化开发平台
+          </p>
+        </div>
       </div>
-    </el-menu-item>
-    <el-sub-menu index="2">
-      <template #title>
-        Workspace
-      </template>
-      <el-menu-item index="2-1">
-        item one
-      </el-menu-item>
-      <el-menu-item index="2-2">
-        item two
-      </el-menu-item>
-      <el-menu-item index="2-3">
-        item three
-      </el-menu-item>
-      <el-sub-menu index="2-4">
-        <template #title>
-          item four
-        </template>
-        <el-menu-item index="2-4-1">
-          item one
-        </el-menu-item>
-        <el-menu-item index="2-4-2">
-          item two
-        </el-menu-item>
-        <el-menu-item index="2-4-3">
-          item three
-        </el-menu-item>
-      </el-sub-menu>
-    </el-sub-menu>
-    <el-menu-item index="3" disabled>
-      Info
-    </el-menu-item>
-    <el-menu-item index="4">
-      Orders
     </el-menu-item>
 
     <el-menu-item h="full" @click="toggleDark()">

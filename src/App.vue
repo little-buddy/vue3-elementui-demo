@@ -31,6 +31,6 @@ p {
 }
 
 .main-container {
-  height: calc(100vh - var(--ep-menu-item-height) - 4px);
+  height: calc(100vh - var(--ep-menu-item-height) - 52px);
 }
 </style>

@@ -40,7 +40,6 @@ export const createApp = ViteSSG(
   },
   (ctx) => {
     // 路由守卫配置
-
     routerConf(ctx.router)
 
     // install all modules under `modules/`
