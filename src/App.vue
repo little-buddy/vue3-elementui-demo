@@ -44,6 +44,18 @@ p {
   background-color: var(--ep-color-primary-light-9);
 }
 
+a {
+  text-decoration: none;
+}
+
+.ep-dropdown-menu a {
+  color: var(--ep-text-color-regular);
+}
+
+.ep-dropdown-menu a:hover {
+  color: var(--ep-dropdown-menuItem-hover-color);
+}
+
 #app {
   text-align: center;
   color: var(--ep-text-color-primary);

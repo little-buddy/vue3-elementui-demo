@@ -3,6 +3,8 @@ import { ArrowDown, ChatDotRound, Connection, FullScreen, Refresh } from '@eleme
 
 import { useFullscreen } from '@vueuse/core'
 
+import { RouterLink } from 'vue-router'
+
 import { repository } from '~/../package.json'
 import logo from '~/assets/imgs/login-icon.png'
 
@@ -34,16 +36,24 @@ const { toggle } = useFullscreen()
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>
-                待我处理
+                <RouterLink to="/handletodo">
+                  待我处理
+                </RouterLink>
               </el-dropdown-item>
               <el-dropdown-item>
-                我提交的
+                <RouterLink to="/handlecommit">
+                  我提交的
+                </RouterLink>
               </el-dropdown-item>
               <el-dropdown-item>
-                抄送我的
+                <RouterLink to="/handlesend">
+                  抄送我的
+                </RouterLink>
               </el-dropdown-item>
               <el-dropdown-item>
-                审批过的
+                <RouterLink to="/handledone">
+                  审批过的
+                </RouterLink>
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>

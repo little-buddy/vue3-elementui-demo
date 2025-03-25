@@ -7,6 +7,7 @@ import {
   Close,
   Coin,
   Collection,
+  Connection,
   CopyDocument,
   Document,
   DocumentAdd,
@@ -21,6 +22,7 @@ import {
   List,
   Location,
   Management,
+  Message,
   Notification,
   Remove,
   Sell,
@@ -91,14 +93,45 @@ export const navConf = [{
 
 const breadMap: any = {}
 
-navConf.forEach((nav) => {
+/*
+// TODO 导航栏外的
+ { icon: Connection, name: '审批中心', subMenu: [
+    { icon: DocumentRemove, name: '应收账款-销售出库', index: '/financialManage/yingshouout' },
+    { icon: Close, name: '应收账款-销售退货', index: '/financialManage/yingshouback' },
+    { icon: DocumentAdd, name: '应付账款-采购入库', index: '/financialManage/yingfuin' },
+    { icon: Remove, name: '应付账款-采购退货', index: '/financialManage/yingfuback' },
+    { icon: Finished, name: '应收账款-对账', index: '/financialManage/yingshou' },
+    { icon: Collection, name: '销项发票', index: '/financialManage/outbill' },
+    { icon: DocumentCopy, name: '收款单', index: '/financialManage/shoukuan' },
+    { icon: WindPower, name: '应付账款-对账', index: '/financialManage/yingfu' },
+    { icon: Wallet, name: '进项发票', index: '/financialManage/inbill' },
+    { icon: DocumentChecked, name: '付款单', index: '/financialManage/fukuan' },
+  ] }
+
+*/
+
+navConf.slice().concat(
+  [
+    { icon: Connection, name: '审批中心', subMenu: [
+      { name: '待我处理', index: '/handletodo' },
+      { name: '我提交的', index: '/handlecommit' },
+      { name: '抄送我的', index: '/handlesend' },
+      { name: '审批过的', index: '/handledone' },
+    ] },
+    {
+      icon: Message,
+      name: '消息中心',
+      index: '/messagecenter',
+    },
+  ] as any,
+).forEach((nav) => {
   if (nav.subMenu) {
     nav.subMenu.forEach((sub) => {
-      breadMap[sub.index] = { ...sub, parent: { ...nav } }
+      breadMap[sub.index.toLocaleLowerCase()] = { ...sub, parent: { ...nav } }
     })
   }
   else {
-    breadMap[nav.index] = { ...nav }
+    breadMap[nav.index.toLocaleLowerCase()] = { ...nav }
   }
 })
 

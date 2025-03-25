@@ -31,6 +31,10 @@ import 'element-plus/theme-chalk/src/message-box.scss'
 // // app.use(ElementPlus);
 // app.mount("#app");
 
+setTimeout(() => {
+  console.log(routes)
+}, 2000)
+
 // https://github.com/antfu/vite-ssg
 export const createApp = ViteSSG(
   App,

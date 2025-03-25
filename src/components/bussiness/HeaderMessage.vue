@@ -1,10 +1,21 @@
 <script lang="ts" setup>
 import { ChatDotRound } from '@element-plus/icons-vue'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 const drawer = ref(false)
+const drawerRef = ref()
 
-function handleClose(done) {
+const list = ref(Array.from({ length: 88 }).fill(0))
+
+const router = useRouter()
+
+function goMsgCenter() {
+  router.push('/messagecenter')
+  drawerRef.value.handleClose()
+}
+
+function handleClose(done: () => void) {
   done()
 }
 </script>
@@ -26,6 +37,7 @@ function handleClose(done) {
     </el-tooltip>
 
     <el-drawer
+      ref="drawerRef"
       v-model="drawer"
       title="新消息"
       direction="rtl"
@@ -34,14 +46,16 @@ function handleClose(done) {
     >
       <template #footer>
         <div class="w-full space-x-4">
-          <el-button type="primary">
+          <el-button type="primary" @click="goMsgCenter()">
             消息中心
           </el-button>
-          <el-button>全部设为已读</el-button>
+          <el-button @click="list = []">
+            全部设为已读
+          </el-button>
         </div>
       </template>
-      <el-scrollbar>
-        <div v-for="(item, index) in Array(88).fill(0)" :key="index" class="ep-box__border border border-0 border-t-[1px] border-solid">
+      <el-scrollbar v-if="list && list.length > 0">
+        <div v-for="(item, index) in list" :key="index" class="ep-box__border border border-0 border-t-[1px] border-solid">
           <div class="ep-box__card flex p-[20px] space-x-4">
             <el-badge is-dot>
               <el-avatar> user </el-avatar>
@@ -60,6 +74,7 @@ function handleClose(done) {
           </div>
         </div>
       </el-scrollbar>
+      <el-empty v-else/>
     </el-drawer>
   </div>
 </template>

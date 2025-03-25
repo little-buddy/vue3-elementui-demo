@@ -11,11 +11,11 @@ const route = useRoute()
 
 const breads = ref<any>([])
 
+// FIXME 路由不区分大小写
 function sureBreads(path: string) {
-  const info = breadMap[path]
+  const info = breadMap[path.toLocaleLowerCase()]
 
   const res = [{ icon: Platform, name: '工作台' }]
-
   if (info) {
     let p = info.parent
     while (p) {
@@ -25,6 +25,8 @@ function sureBreads(path: string) {
 
     res.push({ ...info })
   }
+
+  console.log(res)
 
   breads.value = res
 }
@@ -39,7 +41,9 @@ watch(() => route.path, sureBreads)
     <transition-group name="list" tag="div">
       <el-breadcrumb-item v-for="bread in breads" :key="bread.name">
         <div class="flex items-center space-x-2">
-          <el-icon> <Component :is="bread.icon" />  </el-icon>
+          <el-icon v-if="bread.icon">
+            <Component :is="bread.icon" />
+          </el-icon>
           <span>
             {{ bread.name }}
           </span>
