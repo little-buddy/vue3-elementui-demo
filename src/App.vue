@@ -1,7 +1,15 @@
-<script lang="ts"></script>
+<script lang="ts" setup>
+import zhCn from 'element-plus/es/locale/lang/zh-cn';
+
+// 更改分页文字
+zhCn.el.pagination.total = '共 {total} 条';
+zhCn.el.pagination.goto = '跳至';
+zhCn.el.pagination.pagesize = '条/页';
+zhCn.el.pagination.pageClassifier = '页';
+</script>
 
 <template>
-  <el-config-provider namespace="ep">
+  <el-config-provider namespace="ep" :locale="zhCn">
     <RouterView />
   </el-config-provider>
 </template>
@@ -52,6 +60,10 @@ a {
 
 .ep-dropdown-menu a:hover {
   color: var(--ep-dropdown-menuItem-hover-color);
+}
+
+.ep-el-bg {
+  background-color: var(--ep-bg-color);
 }
 
 #app {

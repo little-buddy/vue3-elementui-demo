@@ -17,7 +17,7 @@
     <div class="h-full">
       <BaseSide />
     </div>
-    <div w="full" class="bg-[#f6f8f9]">
+    <div class="w-full overflow-hidden bg-[#f6f8f9]">
       <RouterView />
     </div>
   </div>

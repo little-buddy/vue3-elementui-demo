@@ -1,15 +1,13 @@
 <script lang="ts" setup>
-import {
-  CirclePlus,
-  Download,
-  MoreFilled,
-  Search,
-} from '@element-plus/icons-vue';
-import { ElMessage } from 'element-plus';
-import { onMounted, reactive, ref } from 'vue';
-import { delayTime } from '~/utils';
+import type { ComponentSize } from 'element-plus';
+import { AddLocation, Search } from '@element-plus/icons-vue';
+import { ref } from 'vue';
 
-const mockData = Array.from({ length: 20 }).fill({
+const tableRef = ref();
+
+const selectItems = [];
+
+const data = Array.from({ length: 20 }).fill({
   prdId: '1',
   prdProperty: '零件',
   prdType: '固定资产',
@@ -28,102 +26,50 @@ const mockData = Array.from({ length: 20 }).fill({
   otherOutNum: 0,
 });
 
-const tableRef = ref();
-
-const selectItems = [];
-
-const dataLoading = ref(false);
-const searchKey = ref('');
-const data = ref([]);
-
-onMounted(() => {
-  mockFetch();
-});
-
-async function mockFetch() {
-  dataLoading.value = true;
-  await delayTime();
-  data.value = mockData;
-  dataLoading.value = false;
-}
-
-async function onSearch() {
-  if (!searchKey.value) {
-    return;
-  }
-  await mockFetch();
-  ElMessage.warning(`搜索关键字 \`${searchKey.value}\` 触发`);
-}
-
-// TODO 表格逻辑
 const onSelectable = (row: any) => true;
 
-// 分页逻辑
-const pageSizes = [20, 50, 100, 200];
-const pageConf = reactive({
-  cur: 1,
-  size: 20,
-  total: 90,
-});
+const currentPage1 = ref(5);
+const currentPage2 = ref(5);
+const currentPage3 = ref(5);
+const currentPage4 = ref(4);
+const pageSize2 = ref(100);
+const pageSize3 = ref(100);
+const pageSize4 = ref(100);
+const size = ref<ComponentSize>('default');
+const background = ref(false);
+const disabled = ref(false);
 
 function handleSizeChange(val: number) {
-  // TODO 一般触发 size 的时候会 从第一页加载
-  pageConf.size = val;
-  pageConf.cur = 1;
-  mockFetch();
+  console.log(`${val} items per page`);
 }
 function handleCurrentChange(val: number) {
-  pageConf.cur = val;
-  mockFetch();
+  console.log(`current page: ${val}`);
 }
 </script>
 
 <template>
-  <div v-if="data.length > 0" class="h-full w-full flex flex-col">
+  <div class="h-full w-full flex flex-col">
     <div class="h-full w-full flex-1 overflow-hidden p-3">
-      <div
-        v-loading="dataLoading"
-        class="ep-el-bg relative h-full flex flex-col"
-      >
+      <div class="ep-el-bg relative h-full flex flex-col">
         <div class="flex justify-between p-4">
           <div>
-            <div>
-              <el-input
-                v-model="searchKey"
-                class="w-[280px]!"
-                placeholder="产品编码/产品名称/品牌/规格型号/成本（单价/元）/标准售价(含税)/元/当前库存数/可用库存数"
-                @keyup.enter="onSearch()"
-              >
-                <template #append>
-                  <el-button :icon="Search" @click="onSearch()" />
-                </template>
-              </el-input>
-            </div>
-          </div>
-          <div class="space-x-4">
-            <el-button type="primary">
-              <el-icon> <CirclePlus /> </el-icon>
-              <span class="ml-2">新建</span>
-            </el-button>
-
-            <el-dropdown>
-              <el-button>
-                <span class="mr-2"> 更多</span>
-                <el-icon> <MoreFilled /> </el-icon>
-              </el-button>
-              <template #dropdown>
-                <el-dropdown-menu>
-                  <el-dropdown-item>
-                    <el-icon> <Download></Download> </el-icon>
-                    导出PDF</el-dropdown-item
-                  >
-                  <el-dropdown-item>
-                    <el-icon> <Download></Download> </el-icon>
-                    数据导出</el-dropdown-item
-                  >
-                </el-dropdown-menu>
+            <el-input
+              placeholder="产品编码/产品名称/品牌/规格型号/成本（单价/元）/标准售价(含税)/元/当前库存数/可用库存数"
+            >
+              <template #prepend>
+                <el-button :icon="Search" />
               </template>
-            </el-dropdown>
+            </el-input>
+          </div>
+          <div>
+            <el-button>
+              <el-icon> <AddLocation></AddLocation> </el-icon>
+              新建</el-button
+            >
+            <el-button>
+              <el-icon> <AddLocation></AddLocation> </el-icon>
+              更多</el-button
+            >
           </div>
         </div>
 
@@ -260,9 +206,9 @@ function handleCurrentChange(val: number) {
               sortable-column
               label="操作"
               fixed="right"
-              width="180"
+              width="160"
             >
-              <el-button type="primary">编辑</el-button>
+              <el-button>编辑</el-button>
               <el-button>查看</el-button>
             </el-table-column>
           </el-table>
@@ -271,21 +217,17 @@ function handleCurrentChange(val: number) {
     </div>
     <div class="ep-el-bg flex justify-center py-2">
       <el-pagination
-        v-model:current-page="pageConf.cur"
-        v-model:page-size="pageConf.size"
-        :page-sizes="pageSizes"
-        layout=" prev, pager, next, jumper, sizes,total"
-        :total="pageConf.total"
+        v-model:current-page="currentPage4"
+        v-model:page-size="pageSize4"
+        :page-sizes="[100, 200, 300, 400]"
+        :size="size"
+        :disabled="disabled"
+        :background="background"
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="400"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"
       />
     </div>
-  </div>
-  <div v-else class="h-full w-full flex items-center justify-center">
-    <el-empty>
-      <el-button :loading="dataLoading" type="primary" @click="mockFetch">
-        刷新</el-button
-      >
-    </el-empty>
   </div>
 </template>

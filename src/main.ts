@@ -12,7 +12,7 @@ import { ViteSSG } from 'vite-ssg';
 import { routes } from 'vue-router/auto-routes';
 import App from './App.vue';
 
-import routerConf from './routerConf';
+import routerConf from './routerconf';
 
 import '~/styles/index.scss';
 import 'uno.css';
@@ -30,10 +30,6 @@ import 'element-plus/theme-chalk/src/message-box.scss';
 // }))
 // // app.use(ElementPlus);
 // app.mount("#app");
-
-setTimeout(() => {
-  console.log(routes);
-}, 2000);
 
 // https://github.com/antfu/vite-ssg
 export const createApp = ViteSSG(
