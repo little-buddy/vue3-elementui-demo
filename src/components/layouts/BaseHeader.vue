@@ -24,6 +24,10 @@ function onHandleDone() {
 function onHandleSend() {
   router.push('/handlesend')
 }
+
+function clickTitle() {
+  router.push('/')
+}
 </script>
 
 <template>
@@ -31,7 +35,7 @@ function onHandleSend() {
     <div class="flex items-center justify-center gap-2">
       <div class="flex items-center space-x-2">
         <div class="h-10 w-10 bg-[length:100%_100%] bg-[url(~/assets/imgs/login-icon.png)]" />
-        <p class="text-[24px] text-white font-bold">
+        <p class="cursor-pointer text-[20px] text-white font-bold" @click="clickTitle()">
           美乐数字化开发平台
         </p>
       </div>
