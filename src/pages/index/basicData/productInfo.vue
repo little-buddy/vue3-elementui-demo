@@ -9,24 +9,80 @@ import { ElMessage } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { delayTime } from '~/utils';
 
-const mockData = Array.from({ length: 20 }).fill({
-  prdId: '1',
-  prdProperty: '零件',
-  prdType: '固定资产',
-  prdName: '11',
-  brand: '11',
-  modeType: '111',
-  prdUnit: '盒',
-  rep: '办公品仓库',
-  repId: '0001007-772f1650f45e417b859828e32f4d4f5d',
-  buyOrder: 0,
-  totalOutVol: 0,
-  totalInVol: 0,
-  buyInNum: 0,
-  otherInNum: 0,
-  buyOutNum: 0,
-  otherOutNum: 0,
-});
+const mockData = [
+  {
+    prdId: '0002',
+    prdProperty: '成品',
+    prdType: '固定资产',
+    prdName: '冷藏品',
+    brand: '冷藏品',
+    modeType: '冷藏品',
+    prdUnit: '个',
+    rep: '冷冻仓库',
+    repId: '0001007-772f1650f45e417b859828e32f4d4f5d',
+    buyOrder: 0,
+    totalOutVol: 200,
+    totalInVol: 1099,
+    buyInNum: 1099,
+    otherInNum: 0,
+    buyOutNum: 100,
+    otherOutNum: 0,
+  },
+  {
+    prdId: 'vvv',
+    prdProperty: '成品',
+    prdType: '网关',
+    prdName: 'mmm',
+    brand: 'mmm',
+    modeType: 'n',
+    prdUnit: '件',
+    rep: '杭州仓',
+    repId: '0009007-772f1650f45e417b859828e32f4d4f5d',
+    buyOrder: 0,
+    totalOutVol: 0,
+    totalInVol: 0,
+    buyInNum: 0,
+    otherInNum: 0,
+    buyOutNum: 0,
+    otherOutNum: 0,
+  },
+  {
+    prdId: 'CP0020',
+    prdProperty: '零件',
+    prdType: '礼品',
+    prdName: '空气炸锅',
+    brand: '飞利浦',
+    modeType: 'HD9741/91',
+    prdUnit: '台',
+    rep: '办公品仓库',
+    repId: '0008007-772f1650f45e417b859828e32f4d4f5d',
+    buyOrder: 0,
+    totalOutVol: 0,
+    totalInVol: 0,
+    buyInNum: 17,
+    otherInNum: 0,
+    buyOutNum: 0,
+    otherOutNum: 17,
+  },
+  {
+    prdId: 'CP0023',
+    prdProperty: '成品',
+    prdType: '礼品',
+    prdName: '智能马桶盖',
+    brand: 'TOTO',
+    modeType: 'TCF345CS',
+    prdUnit: '个',
+    rep: '办公品仓库',
+    repId: '0001807-772f1650f45e417b859828e32f4d4f5d',
+    buyOrder: 0,
+    totalOutVol: 0,
+    totalInVol: 7,
+    buyInNum: 0,
+    otherInNum: 0,
+    buyOutNum: 0,
+    otherOutNum: 7,
+  },
+];
 
 const tableRef = ref();
 
@@ -35,6 +91,7 @@ const selectItems = [];
 const dataLoading = ref(false);
 const searchKey = ref('');
 const data = ref([]);
+const openNewDialog = ref(false);
 
 onMounted(() => {
   mockFetch();
@@ -47,6 +104,8 @@ async function mockFetch() {
   dataLoading.value = false;
 }
 
+// 顶部逻辑
+
 async function onSearch() {
   if (!searchKey.value) {
     return;
@@ -55,8 +114,24 @@ async function onSearch() {
   ElMessage.warning(`搜索关键字 \`${searchKey.value}\` 触发`);
 }
 
+function onAdd() {
+  openNewDialog.value = true;
+}
+
+function onBeforeClose(done: any) {
+  done();
+}
+
 // TODO 表格逻辑
+const lookShow = ref(false);
 const onSelectable = (row: any) => true;
+function onRowDbClick(row) {
+  // 行双击 ->查看元素
+}
+function onRowClick(row) {
+  // 行单击
+  tableRef.value.toggleRowSelection(row);
+}
 
 // 分页逻辑
 const pageSizes = [20, 50, 100, 200];
@@ -101,7 +176,7 @@ function handleCurrentChange(val: number) {
             </div>
           </div>
           <div class="space-x-4">
-            <el-button type="primary">
+            <el-button type="primary" @click="onAdd">
               <el-icon> <CirclePlus /> </el-icon>
               <span class="ml-2">新建</span>
             </el-button>
@@ -135,6 +210,8 @@ function handleCurrentChange(val: number) {
             :border="true"
             height="100%"
             stripe
+            @row-dblclick="onRowDbClick"
+            @row-click="onRowClick"
           >
             <el-table-column
               type="selection"
@@ -262,8 +339,8 @@ function handleCurrentChange(val: number) {
               fixed="right"
               width="180"
             >
-              <el-button type="primary">编辑</el-button>
-              <el-button>查看</el-button>
+              <el-button type="primary" @click.stop="">编辑</el-button>
+              <el-button @click.stop="">查看</el-button>
             </el-table-column>
           </el-table>
         </div>
@@ -288,4 +365,15 @@ function handleCurrentChange(val: number) {
       >
     </el-empty>
   </div>
+
+  <ProductInfoForm v-model="openNewDialog"></ProductInfoForm>
+  <!-- 这里很麻烦，但还是必须要去做 -->
+  <el-drawer
+    v-model="lookShow"
+    title="I am the title"
+    :direction="direction"
+    :before-close="handleClose"
+  >
+    <span>Hi, there!</span>
+  </el-drawer>
 </template>
