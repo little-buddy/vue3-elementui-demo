@@ -1,5 +1,3 @@
 <template>
-  <div>
-    应收账款-销售出库
-  </div>
+  <div>应收账款-销售出库</div>
 </template>

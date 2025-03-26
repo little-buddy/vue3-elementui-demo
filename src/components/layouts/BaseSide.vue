@@ -1,26 +1,29 @@
 <script lang="ts" setup>
-import { ref , watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { navConf } from '~/constants'
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
+import { navConf } from '~/constants';
 
-const route = useRoute()
-const activeIndex = ref(route.path)
+const route = useRoute();
+const activeIndex = ref(route.path);
 
-watch(() => route.path, (n) => {
-  activeIndex.value = n
-})
+watch(
+  () => route.path,
+  n => {
+    activeIndex.value = n;
+  }
+);
 
 // const isCollapse = ref(true)
 function handleOpen(key: string, keyPath: string[]) {
   // eslint-disable-next-line no-console
-  console.log(key, keyPath)
+  console.log(key, keyPath);
 }
 function handleClose(key: string, keyPath: string[]) {
   // eslint-disable-next-line no-console
-  console.log(key, keyPath)
+  console.log(key, keyPath);
 }
 
-const MenuData = navConf
+const MenuData = navConf;
 </script>
 
 <template>
@@ -49,7 +52,10 @@ const MenuData = navConf
             <span>{{ menu.name }}</span>
           </template>
 
-          <el-menu-item-group v-for="subMenu in menu.subMenu" :key="subMenu.name">
+          <el-menu-item-group
+            v-for="subMenu in menu.subMenu"
+            :key="subMenu.name"
+          >
             <el-menu-item :index="subMenu.index">
               <template #title>
                 <el-icon>

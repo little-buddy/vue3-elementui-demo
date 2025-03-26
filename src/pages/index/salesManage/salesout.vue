@@ -1,6 +1,3 @@
 <template>
-  <div>
-    销售出库
-  </div>
+  <div>销售出库</div>
 </template>
-

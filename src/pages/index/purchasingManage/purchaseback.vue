@@ -1,6 +1,3 @@
 <template>
-  <div>
-    采购退货
-  </div>
+  <div>采购退货</div>
 </template>
-

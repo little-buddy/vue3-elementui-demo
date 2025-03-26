@@ -1,5 +1,3 @@
 <template>
-  <div>
-    进项发票
-  </div>
+  <div>进项发票</div>
 </template>

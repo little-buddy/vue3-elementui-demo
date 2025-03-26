@@ -1,6 +1,3 @@
 <template>
-  <div>
-    库存调拨
-  </div>
+  <div>库存调拨</div>
 </template>
-

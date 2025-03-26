@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { BarChart } from 'echarts/charts'
+import { BarChart } from 'echarts/charts';
 import {
   GridComponent,
   LegendComponent,
   TitleComponent,
   TooltipComponent,
-} from 'echarts/components'
-import { use } from 'echarts/core'
-import { CanvasRenderer } from 'echarts/renderers'
-import VChart, { THEME_KEY } from 'vue-echarts'
-import { GridItem, GridLayout } from 'vue-grid-layout-v3'
+} from 'echarts/components';
+import { use } from 'echarts/core';
+import { CanvasRenderer } from 'echarts/renderers';
+import VChart, { THEME_KEY } from 'vue-echarts';
+import { GridItem, GridLayout } from 'vue-grid-layout-v3';
 
 use([
   CanvasRenderer,
@@ -18,8 +18,7 @@ use([
   LegendComponent,
   GridComponent,
   BarChart,
-
-])
+]);
 
 const layout = [
   // line
@@ -48,12 +47,11 @@ const layout = [
   { x: 9, y: 15, w: 3, h: 2 },
   // line
   { x: 0, y: 17, w: 12, h: 4 },
-
-]
+];
 
 layout.forEach((item: any, index) => {
-  item.i = index.toString()
-})
+  item.i = index.toString();
+});
 
 const data = {
   curRepNum: 0,
@@ -75,7 +73,7 @@ const data = {
   fukuanNum: 80822,
   fukuanSupplierNum: 38,
   fukuanLine: 0,
-}
+};
 
 const listData = [
   {
@@ -168,7 +166,7 @@ const listData = [
     title: '付款金额趋势',
     dataKey: 'fukuanLine',
   },
-]
+];
 </script>
 
 <template>
@@ -177,8 +175,9 @@ const listData = [
   <div class="h-full w-full overflow-scroll">
     <el-scrollbar>
       <GridLayout
-        v-model:layout="layout" :col-num="12" :row-height="80"
-
+        v-model:layout="layout"
+        :col-num="12"
+        :row-height="80"
         :is-draggable="false"
         :is-resizable="false"
       >
@@ -200,15 +199,20 @@ const listData = [
 
             <div
               v-if="listData[item.i].color"
-              class="relative h-full flex items-center justify-center text-[36px] font-bold" :style="{
-                color: listData[item.i].color }"
+              class="relative h-full flex items-center justify-center text-[36px] font-bold"
+              :style="{
+                color: listData[item.i].color,
+              }"
             >
               <span>
                 {{ data[listData[item.i].dataKey] }}
               </span>
             </div>
-            <DashboardBar v-else-if="listData[item.i].dataKey === 'prdCanRepNum'" :name="listData[item.i].title " />
-            <DashboardLine v-else :name="listData[item.i].title " />
+            <DashboardBar
+              v-else-if="listData[item.i].dataKey === 'prdCanRepNum'"
+              :name="listData[item.i].title"
+            />
+            <DashboardLine v-else :name="listData[item.i].title" />
           </el-card>
         </GridItem>
       </GridLayout>

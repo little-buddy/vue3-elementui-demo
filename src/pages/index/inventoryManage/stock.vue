@@ -1,7 +1,3 @@
 <template>
-  <div>
-    库存盘点
-  </div>
+  <div>库存盘点</div>
 </template>
-
-

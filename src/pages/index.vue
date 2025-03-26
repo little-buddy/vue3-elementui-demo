@@ -1,10 +1,14 @@
 <template>
   <BaseHeader />
   <div class="h-[48px] w-full flex">
-    <div class="ep-box__border w-[240px] flex items-center border-0 border-b-1 border-r-1 border-solid pl-[20px] font-bold">
+    <div
+      class="ep-box__border w-[240px] flex items-center border-0 border-b-1 border-r-1 border-solid pl-[20px] font-bold"
+    >
       工作台
     </div>
-    <div class="ep-box__border flex flex-1 items-center border-0 border-b-1 border-solid pl-[20px]">
+    <div
+      class="ep-box__border flex flex-1 items-center border-0 border-b-1 border-solid pl-[20px]"
+    >
       <!-- 这个面包屑的功能有点难搞的 -->
       <Breadcrumb />
     </div>
@@ -19,4 +23,4 @@
   </div>
 </template>
 
-  <!-- 它这里嵌套路由是存在问题的，需要做额外的处理 -->
+<!-- 它这里嵌套路由是存在问题的，需要做额外的处理 -->

@@ -1,6 +1,3 @@
 <template>
-  <div>
-    报价单
-  </div>
+  <div>报价单</div>
 </template>
-

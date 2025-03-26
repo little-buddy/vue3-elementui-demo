@@ -1,5 +1,3 @@
 <template>
-  <div>
-    待我处理
-  </div>
+  <div>待我处理</div>
 </template>

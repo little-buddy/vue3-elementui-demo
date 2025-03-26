@@ -1,10 +1,10 @@
 <template>
   <div h-full w-full flex overflow-hidden bg-white>
-    <div class="relative h-full w-1/3 bg-[length:100%_100%] bg-[url(~/assets/imgs/login-img.png)] text-white max-md:hidden">
+    <div
+      class="relative h-full w-1/3 bg-[length:100%_100%] bg-[url(~/assets/imgs/login-img.png)] text-white max-md:hidden"
+    >
       <div class="relative z-2 w-full p-[40px] space-y-2">
-        <p text="[40px]" font-bold>
-          美乐低代码—数字化开发平台
-        </p>
+        <p text="[40px]" font-bold>美乐低代码—数字化开发平台</p>
         <p class="text-[18px] font-bold">
           登录用户/密码：admin/admin (每天重置数据)
         </p>
@@ -15,19 +15,24 @@
 
       <div class="absolute top-0 z-1 h-full w-full bg-[#0000a04d]" />
 
-      <div class="bottom-0 z-2 w-full p-[40px] text-center text-xs text-white font-bold absolute!">
+      <div
+        class="bottom-0 z-2 w-full p-[40px] text-center text-xs text-white font-bold absolute!"
+      >
         © 上海极昇数科数字科技有限公司提供技术支持
       </div>
     </div>
 
-    <div flex-1 class="flex bg-[length:100%_100%] bg-[url(~/assets/imgs/login-bg.png)]">
+    <div
+      flex-1
+      class="flex bg-[length:100%_100%] bg-[url(~/assets/imgs/login-bg.png)]"
+    >
       <div class="m-auto w-[340px] py-[20px]">
         <!-- title -->
         <div class="flex items-center space-x-2">
-          <div class="h-10 w-10 bg-[length:100%_100%] bg-[url(~/assets/imgs/login-icon.png)]" />
-          <p class="text-[24px] font-bold">
-            美乐数字化开发平台
-          </p>
+          <div
+            class="h-10 w-10 bg-[length:100%_100%] bg-[url(~/assets/imgs/login-icon.png)]"
+          />
+          <p class="text-[24px] font-bold">美乐数字化开发平台</p>
         </div>
 
         <!-- tabs -->

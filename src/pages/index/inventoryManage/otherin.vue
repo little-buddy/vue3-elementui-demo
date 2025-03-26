@@ -1,7 +1,3 @@
 <template>
-  <div>
-    其他入库单
-  </div>
+  <div>其他入库单</div>
 </template>
-
-

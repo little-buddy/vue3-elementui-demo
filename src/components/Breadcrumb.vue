@@ -1,36 +1,36 @@
 <script lang="ts" setup>
-import { ArrowRight, Platform } from '@element-plus/icons-vue'
-import { ref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { ArrowRight, Platform } from '@element-plus/icons-vue';
+import { ref, watch } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
-import { breadMap } from '~/constants'
+import { breadMap } from '~/constants';
 
-const route = useRoute()
+const route = useRoute();
 
 // const router = useRouter()
 
-const breads = ref<any>([])
+const breads = ref<any>([]);
 
 // FIXME 路由不区分大小写
 function sureBreads(path: string) {
-  const info = breadMap[path.toLocaleLowerCase()]
+  const info = breadMap[path.toLocaleLowerCase()];
 
-  const res = [{ icon: Platform, name: '工作台' }]
+  const res = [{ icon: Platform, name: '工作台' }];
   if (info) {
-    let p = info.parent
+    let p = info.parent;
     while (p) {
-      res.push({ ...p })
-      p = p.parent
+      res.push({ ...p });
+      p = p.parent;
     }
 
-    res.push({ ...info })
+    res.push({ ...info });
   }
 
-  breads.value = res
+  breads.value = res;
 }
 
-sureBreads(route.path)
-watch(() => route.path, sureBreads)
+sureBreads(route.path);
+watch(() => route.path, sureBreads);
 </script>
 
 <!-- 仅展示不跳转 -->

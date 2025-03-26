@@ -1,6 +1,6 @@
-import axios from 'axios'
+import axios from 'axios';
 
-import { ProxyAgent } from 'proxy-agent'
+import { ProxyAgent } from 'proxy-agent';
 import {
   defineConfig,
   presetAttributify,
@@ -10,14 +10,20 @@ import {
   presetWebFonts,
   transformerDirectives,
   transformerVariantGroup,
-} from 'unocss'
+} from 'unocss';
 
 // css 原子配置
 export default defineConfig({
   rules: [['bg-primary', { 'background-color': 'var(--ep-color-primary)' }]],
   shortcuts: [
-    ['btn', 'px-4 py-1 rounded inline-block bg-teal-700 text-white cursor-pointer !outline-none hover:bg-teal-800 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50'],
-    ['icon-btn', 'inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600'],
+    [
+      'btn',
+      'px-4 py-1 rounded inline-block bg-teal-700 text-white cursor-pointer !outline-none hover:bg-teal-800 disabled:cursor-default disabled:bg-gray-600 disabled:opacity-50',
+    ],
+    [
+      'icon-btn',
+      'inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 hover:text-teal-600',
+    ],
   ],
   presets: [
     presetUno(),
@@ -28,7 +34,10 @@ export default defineConfig({
     presetTypography(),
     presetWebFonts({
       // #issues [unocss] Failed to fetch web fonts
-      customFetch: (url: string) => axios.get(url, { httpsAgent: new ProxyAgent('https://localhost:7890') }).then(it => it.data),
+      customFetch: (url: string) =>
+        axios
+          .get(url, { httpsAgent: new ProxyAgent('https://localhost:7890') })
+          .then(it => it.data),
       fonts: {
         sans: 'DM Sans',
         serif: 'DM Serif Display',
@@ -43,4 +52,4 @@ export default defineConfig({
     transformerVariantGroup(),
   ],
   safelist: 'prose prose-sm m-auto text-left'.split(' '),
-})
+});

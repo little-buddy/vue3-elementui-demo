@@ -1,32 +1,38 @@
 <script lang="ts" setup>
-import { ArrowDown, ChatDotRound, Connection, FullScreen, Refresh } from '@element-plus/icons-vue'
+import {
+  ArrowDown,
+  ChatDotRound,
+  Connection,
+  FullScreen,
+  Refresh,
+} from '@element-plus/icons-vue';
 
-import { useFullscreen } from '@vueuse/core'
-import { useRouter } from 'vue-router'
+import { useFullscreen } from '@vueuse/core';
+import { useRouter } from 'vue-router';
 
-import { repository } from '~/../package.json'
+import { repository } from '~/../package.json';
 
-import { toggleDark } from '~/composables'
+import { toggleDark } from '~/composables';
 
-const { toggle } = useFullscreen()
+const { toggle } = useFullscreen();
 
-const router = useRouter()
+const router = useRouter();
 
 function onHandleTodo() {
-  router.push('/handletodo')
+  router.push('/handletodo');
 }
 function onHandleCommit() {
-  router.push('/handlecommit')
+  router.push('/handlecommit');
 }
 function onHandleDone() {
-  router.push('/handledone')
+  router.push('/handledone');
 }
 function onHandleSend() {
-  router.push('/handlesend')
+  router.push('/handlesend');
 }
 
 function clickTitle() {
-  router.push('/')
+  router.push('/');
 }
 </script>
 
@@ -34,8 +40,13 @@ function clickTitle() {
   <div class="bg-primary h-[60px] flex justify-between px-[24px]">
     <div class="flex items-center justify-center gap-2">
       <div class="flex items-center space-x-2">
-        <div class="h-10 w-10 bg-[length:100%_100%] bg-[url(~/assets/imgs/login-icon.png)]" />
-        <p class="cursor-pointer text-[20px] text-white font-bold" @click="clickTitle()">
+        <div
+          class="h-10 w-10 bg-[length:100%_100%] bg-[url(~/assets/imgs/login-icon.png)]"
+        />
+        <p
+          class="cursor-pointer text-[20px] text-white font-bold"
+          @click="clickTitle()"
+        >
           美乐数字化开发平台
         </p>
       </div>
@@ -53,24 +64,16 @@ function clickTitle() {
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>
-                <div @click="onHandleTodo()">
-                  待我处理
-                </div>
+                <div @click="onHandleTodo()">待我处理</div>
               </el-dropdown-item>
               <el-dropdown-item>
-                <div @click="onHandleCommit()">
-                  我提交的
-                </div>
+                <div @click="onHandleCommit()">我提交的</div>
               </el-dropdown-item>
               <el-dropdown-item>
-                <div @click="onHandleSend()">
-                  抄送我的
-                </div>
+                <div @click="onHandleSend()">抄送我的</div>
               </el-dropdown-item>
               <el-dropdown-item>
-                <div @click="onHandleDone()">
-                  审批过的
-                </div>
+                <div @click="onHandleDone()">审批过的</div>
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -106,7 +109,13 @@ function clickTitle() {
         </el-button>
       </el-tooltip>
 
-      <el-button class="bg-transparent hover:text-white!" link :href="repository.url" tag="a" target="_blank">
+      <el-button
+        class="bg-transparent hover:text-white!"
+        link
+        :href="repository.url"
+        tag="a"
+        target="_blank"
+      >
         <div i-ri-github-fill class="text-xl" />
       </el-button>
     </div>

@@ -1,12 +1,17 @@
 {
   // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
-  "editor.formatOnSave": false,
+  // "prettier.enable": false,
+  // "editor.formatOnSave": false,
 
   // Auto fix
+  // Prettier 部分
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Eslint 相关部分
+  "eslint.enable": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
+    "source.fixAll.stylelint": "explicit"
   },
 
   // Enable eslint for all supported languages

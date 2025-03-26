@@ -1,47 +1,43 @@
-# element-plus-vite-starter
+# Vue3 ElementUI Demo
 
-> A starter kit for Element Plus with Vite
+### unocss 的使用
 
-- Preview: <https://vite-starter.element-plus.org>
-
-This is an example of on-demand element-plus with [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components).
-
-> If you want to import all, it may be so simple that no examples are needed. Just follow [quickstart | Docs](https://element-plus.org/zh-CN/guide/quickstart.html) and import them.
-
-If you just want an on-demand import example `manually`, you can check [unplugin-element-plus/examples/vite](https://github.com/element-plus/unplugin-element-plus/tree/main/examples/vite).
-
-If you want to a nuxt starter, see [element-plus-nuxt-starter](https://github.com/element-plus/element-plus-nuxt-starter/).
-
-## Project setup
-
-```bash
-pnpm install
-
-# npm install
-# yarn install
+```
+由于与 tailwindcss 的设计目标不同，UnoCSS不支持 TailwindCSS 的插件系统或配置，这意味着它可能会使从高度定制的 Tailwind CSS 项目迁移变得更加困难。
 ```
 
-### Compiles and hot-reloads for development
+### unocss 请求字体网络异常
 
-```bash
-npm run dev
+```
+Failed to fetch web fonts: https://fonts.googleapis.com/css2?family=DM+Sans&family=DM+Serif+Display&family=DM+Mono&display=swap
+
+我本地是连接vpn的，只是node请求的时候没有走vpn，所以导致它访问异常
+
+配置node代理即可解决
+npm config set proxy http://127.0.0.1:7890
+npm config set https-proxy http://127.0.0.1:7890
+
 ```
 
-### Compiles and minifies for production
+### 主题颜色修改
 
-```bash
-npm run build
+```
+它这个脚手架是修改了主题颜色的，具体还需要我们重新配置
+它这里的 primary 是绿色的
 ```
 
-## Usage
+### eslint中对于prettier的配置
 
-```bash
-git clone https://github.com/element-plus/element-plus-vite-starter
-cd element-plus-vite-starter
-npm i
-npm run dev
 ```
+对于js部分，它基础的格式化，始终觉得没有 prettier好用
+所以打算重新把 prettier 配置上
 
-### Custom theme
+eslint-config-prettier 这个文件包是关闭 eslint 对 prettier 有相关冲突的规则
 
-See `src/styles/element/index.scss`.
+发现现在 vue3 的项目格式化只能选择 volar 和 eslint，不能选择prettier
+然后进行配置 prettier的时候，vue的文件也不会被 prettier 自动格式化，这个就很头疼
+
+prettier .  --write 执行的时候却可以运行
+
+prettier 和 eslint 是可以共存的，冲突部分需要 eslint-config-prettier 来解决
+```

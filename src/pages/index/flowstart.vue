@@ -1,5 +1,3 @@
 <template>
-  <div>
-    流程发起
-  </div>
+  <div>流程发起</div>
 </template>

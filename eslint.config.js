@@ -1,7 +1,11 @@
-import antfu from '@antfu/eslint-config'
+import antfu from '@antfu/eslint-config';
+import prettier from 'eslint-config-prettier';
 
-export default antfu({
-  formatters: true,
-  unocss: true,
-  vue: true,
-})
+export default antfu(
+  {
+    formatters: true,
+    unocss: true,
+    vue: true,
+  },
+  prettier
+);

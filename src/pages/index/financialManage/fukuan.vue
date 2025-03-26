@@ -1,5 +1,3 @@
 <template>
-  <div>
-    付款单
-  </div>
+  <div>付款单</div>
 </template>

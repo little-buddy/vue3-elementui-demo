@@ -1,6 +1,3 @@
 <template>
-  <div>
-    收款单
-  </div>
+  <div>收款单</div>
 </template>
-
