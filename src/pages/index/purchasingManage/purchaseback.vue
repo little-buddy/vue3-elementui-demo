@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import Page from '~/pages/index/basicData/productInfo.vue';
+</script>
+
 <template>
-  <div>采购退货</div>
+  <Page></Page>
 </template>

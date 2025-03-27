@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import Page from '~/pages/index/basicData/productInfo.vue';
+</script>
+
 <template>
-  <div>进销存数据看板</div>
+  <Page></Page>
 </template>

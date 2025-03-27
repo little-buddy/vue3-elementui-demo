@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import Page from '~/pages/index/basicData/productInfo.vue';
+</script>
+
 <template>
-  <div>其他出库单</div>
+  <Page></Page>
 </template>
