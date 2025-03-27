@@ -9,7 +9,6 @@
     <div
       class="ep-box__border flex flex-1 items-center border-0 border-b-1 border-solid pl-[20px]"
     >
-      <!-- 这个面包屑的功能有点难搞的 -->
       <Breadcrumb />
     </div>
   </div>
@@ -17,10 +16,14 @@
     <div class="h-full">
       <BaseSide />
     </div>
-    <div class="w-full overflow-hidden bg-[#f6f8f9]">
+    <div class="content-bg w-full overflow-hidden">
       <RouterView />
     </div>
   </div>
 </template>
 
-<!-- 它这里嵌套路由是存在问题的，需要做额外的处理 -->
+<style>
+.content-bg {
+  background-color: var(--ep-fill-color-light);
+}
+</style>
