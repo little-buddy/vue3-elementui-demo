@@ -1,5 +1,7 @@
 <script lang="ts" setup>
 import zhCn from 'element-plus/es/locale/lang/zh-cn';
+import { onBeforeMount } from 'vue';
+import { useUserStore } from './store';
 
 // 更改分页文字
 zhCn.el.pagination.total = '共 {total} 条';

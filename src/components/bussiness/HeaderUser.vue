@@ -3,8 +3,11 @@ import { ArrowDown } from '@element-plus/icons-vue';
 import { ElMessageBox } from 'element-plus';
 import { useRouter } from 'vue-router';
 import logo from '~/assets/imgs/login-icon.png';
+import { useUserStore } from '~/store';
 
 const router = useRouter();
+
+const userStore = useUserStore();
 
 function onUser() {
   router.push('/usercenter');
@@ -22,12 +25,20 @@ function onClearUserCache() {
   );
 }
 
-function onLogout() {
-  ElMessageBox.confirm('确认是否退出当前用户？', '提示', {
-    confirmButtonText: '退出',
-    cancelButtonText: '取消',
-    type: 'warning',
-  });
+async function onLogout() {
+  try {
+    await ElMessageBox.confirm('确认是否退出当前用户？', '提示', {
+      confirmButtonText: '退出',
+      cancelButtonText: '取消',
+      type: 'warning',
+    });
+
+    console.log(router);
+
+    userStore.logout();
+  } catch (error) {
+    console.log(error.message);
+  }
 }
 </script>
 
@@ -41,14 +52,12 @@ function onLogout() {
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item>
-          <div @click="onUser()">账号信息</div>
+        <el-dropdown-item @click="onUser()"> 账号信息 </el-dropdown-item>
+        <el-dropdown-item @click="onClearUserCache()">
+          清除缓存
         </el-dropdown-item>
-        <el-dropdown-item>
-          <div @click="onClearUserCache()">清除缓存</div>
-        </el-dropdown-item>
-        <el-dropdown-item divided>
-          <div @click="onLogout()">退出登录</div>
+        <el-dropdown-item divided @click="onLogout()">
+          退出登录
         </el-dropdown-item>
       </el-dropdown-menu>
     </template>

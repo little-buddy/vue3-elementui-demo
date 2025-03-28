@@ -3,6 +3,7 @@ import { Lock, Message, Unlock, User } from '@element-plus/icons-vue';
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus';
 import { isVNode, reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '~/store';
 import { delayTime } from '~/utils';
 
 interface LoginInfo {
@@ -11,6 +12,8 @@ interface LoginInfo {
   imgcode: string;
   savepassword: boolean;
 }
+
+const userStore = useUserStore();
 
 const rules: FormRules<LoginInfo> = {
   username: [{ required: true, message: '请输入用户名' }],
@@ -34,28 +37,28 @@ async function doSbumit() {
   if (!formRef.value) return;
 
   const isValid = await formRef.value.validate((valid, fields) => {
-    return valid;
+    return valid as boolean;
   });
 
-  if (isValid) {
-    loading.value = true;
-    await delayTime();
+  if (!isValid) return;
+
+  loading.value = true;
+  // TODO 这里是发生 api 登录请求
+
+  try {
+    await userStore.login(
+      loginInfo.username,
+      loginInfo.password,
+      !loginInfo.savepassword
+    );
+
+    ElMessage.success('登录成功');
+    router.push('/');
+  } catch (error) {
+    ElMessage.error((error as Error)?.message);
+  } finally {
     loading.value = false;
-
-    if (loginInfo.username !== 'admin' && loginInfo.password !== 'admin') {
-      ElMessage.error('账号密码错误');
-    } else {
-      if (loginInfo.savepassword) {
-        // TODO 登录操作
-        localStorage.setItem('isSavePassword', 'true');
-      }
-
-      ElMessage.success('登录成功');
-      router.push('/');
-    }
   }
-
-  // 提交登录
 }
 </script>
 
@@ -84,16 +87,20 @@ async function doSbumit() {
         :prefix-icon="Lock"
         placeholder="请输入密码"
         type="password"
-        @keyup.enter="doSbumit"
         clearable
         show-password
+        @keyup.enter="doSbumit"
       />
     </el-form-item>
     <!-- <el-form-item prop="imgcode">
       <el-input v-model="loginInfo.imgcode" class="h-[40px]" :prefix-icon="Unlock" placeholder="图片验证码" clearable />
     </el-form-item> -->
     <!-- 记住密码就是本地缓存数据 -->
-    <el-checkbox v-model="loginInfo.savepassword" label="记住密码" />
+    <el-checkbox
+      v-model="loginInfo.savepassword"
+      label="记住密码"
+      class="pl-2"
+    />
     <!-- 登录进行表单校验 -->
     <el-button
       :loading="loading"

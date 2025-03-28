@@ -9,11 +9,14 @@ import { ViteSSG } from 'vite-ssg';
 
 // or use cdn, uncomment cdn link in `index.html`
 
+import { markRaw } from 'vue';
 import { routes } from 'vue-router/auto-routes';
+
 import App from './App.vue';
 
+import { setupRouter$ } from './composables';
 import routerConf from './routerconf';
-
+import pinia from './store';
 import '~/styles/index.scss';
 import 'uno.css';
 // If you want to use ElMessage, import it.
@@ -39,6 +42,9 @@ export const createApp = ViteSSG(
     base: import.meta.env.BASE_URL,
   },
   ctx => {
+    setupRouter$(ctx.router);
+    ctx.app.use(pinia);
+
     // 路由守卫配置
     routerConf(ctx.router);
 

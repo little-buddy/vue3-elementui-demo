@@ -7,5 +7,10 @@ export default antfu(
     unocss: true,
     vue: true,
   },
-  prettier
+  prettier,
+  {
+    rules: {
+      'antfu/if-newline': 'off',
+    },
+  }
 );
