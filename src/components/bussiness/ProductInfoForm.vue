@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Plus, Search } from '@element-plus/icons-vue';
+import { Close, Plus, Search } from '@element-plus/icons-vue';
 import { ElMessage } from 'element-plus';
 import { computed, reactive, ref } from 'vue';
 import { delayTime } from '~/utils';
@@ -208,7 +208,16 @@ async function onSave() {
           <el-row :gutter="20" class="w-full">
             <el-col :span="12">
               <el-form-item label="仓库" prop="rep">
-                <el-input v-model="form.rep" readonly>
+                <el-input v-model="form.rep" clearable readonly>
+                  <template #suffix>
+                    <el-icon
+                      v-if="form.rep"
+                      class="cursor-pointer"
+                      @click="form.rep = ''"
+                      ><Close></Close
+                    ></el-icon>
+                  </template>
+
                   <template #append>
                     <el-button
                       :icon="Search"
@@ -221,7 +230,16 @@ async function onSave() {
             <Rep></Rep>
             <el-col :span="12">
               <el-form-item label="仓位" prop="repId">
-                <el-input v-model="form.repId" readonly>
+                <el-input v-model="form.repId" readonly clearable>
+                  <template #suffix>
+                    <el-icon
+                      v-if="form.repId"
+                      class="cursor-pointer"
+                      @click="form.repId = ''"
+                      ><Close></Close
+                    ></el-icon>
+                  </template>
+
                   <template #append>
                     <el-button :icon="Search" @click="onRepId()"></el-button>
                   </template>
