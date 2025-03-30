@@ -44,7 +44,7 @@ function onSelect(i: string) {
               class="h-[48px] flex cursor-pointer list-none items-center pl-6 space-x-2 hover:bg-[blue]"
             >
               <el-icon>
-                <Postcard></Postcard>
+                <Lock></Lock>
               </el-icon>
               <span> 重置密码 </span>
             </el-menu-item>

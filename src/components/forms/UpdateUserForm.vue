@@ -5,13 +5,7 @@ import { Plus } from '@element-plus/icons-vue';
 import { ElMessage, genFileId } from 'element-plus';
 import { ref, toRaw, watch, watchEffect } from 'vue';
 import { useUserStore } from '~/store';
-import {
-  delayTime,
-  emailValidator,
-  phoneValidator,
-  upl,
-  uploadImg,
-} from '~/utils';
+import { delayTime, emailValidator, phoneValidator, uploadImg } from '~/utils';
 
 const userStore = useUserStore();
 const { userInfo } = userStore;
@@ -78,10 +72,6 @@ async function onSave() {
     loading.value = false;
   }
 }
-
-watchEffect(() => {
-  console.log(form.value);
-});
 </script>
 
 <template>
@@ -101,17 +91,15 @@ watchEffect(() => {
         :file-list="[]"
         action="#"
         :auto-upload="false"
-        :limit="0"
+        list-type="picture-card"
         accept="image/*"
         @change="onImgChange"
       >
-        <div class="el-upload__avatar">
-          <el-image
-            :src="form.avatar"
-            fit="contain"
-            class="h-full w-full"
-          ></el-image>
-        </div>
+        <el-image
+          :src="form.avatar"
+          fit="contain"
+          class="h-full w-full"
+        ></el-image>
       </el-upload>
     </el-form-item>
     <el-form-item label="登录账户名">
@@ -149,15 +137,7 @@ watchEffect(() => {
   }
 }
 
-.el-upload__avatar {
-  --ep-upload-picture-card-size: 84px;
-  width: var(--ep-upload-picture-card-size);
-  height: var(--ep-upload-picture-card-size);
-  border: 1px dashed var(--ep-menu-border-color);
-  border-radius: 4px;
-  transition: border-color 0.5s;
-  &:hover {
-    border-color: var(--ep-color-primary);
-  }
+.ep-form-item__label-wrap {
+  align-items: center;
 }
 </style>
