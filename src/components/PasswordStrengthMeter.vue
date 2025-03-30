@@ -320,10 +320,10 @@ export default {
     </div>
 
     <div v-if="showStrengthMeter" :class="[strengthMeterClass]">
-      <!-- <div
+      <div
         :class="[strengthMeterFillClass]"
         :data-score="passwordStrength"
-      ></div> -->
+      ></div>
     </div>
   </div>
 </template>
