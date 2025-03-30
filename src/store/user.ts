@@ -15,7 +15,7 @@ interface UserInfo {
 }
 
 export const useUserStore = defineStore('user', {
-  state: () => ({ userInfo: {}, isTemp: true }),
+  state: () => ({ userInfo: {} as Partial<UserInfo>, isTemp: true }),
   getters: {
     isLogin: (state: any) => state.userInfo.token,
   },

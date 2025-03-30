@@ -9,6 +9,8 @@ const router = useRouter();
 
 const userStore = useUserStore();
 
+const { userInfo } = userStore;
+
 function onUser() {
   router.push('/usercenter');
 }
@@ -45,8 +47,8 @@ async function onLogout() {
 <template>
   <el-dropdown trigger="click">
     <span class="el-dropdown-link flex cursor-pointer items-center space-x-2">
-      <el-image :src="logo" fit="fill" class="h-[24px] w-[24px]" />
-      <span> 用户名 </span>
+      <el-avatar :src="userInfo.avatar" size="small" />
+      <span> {{ userInfo.name }} </span>
 
       <el-icon class="el-icon--right"><ArrowDown /></el-icon>
     </span>

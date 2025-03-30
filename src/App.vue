@@ -42,6 +42,9 @@ p {
 .ep-box__border {
   border-color: var(--ep-menu-border-color);
 }
+.ep-text__tip {
+  color: #72767b;
+}
 
 .ep-box__card {
   cursor: pointer;
@@ -66,6 +69,10 @@ a {
 
 .ep-el-bg {
   background-color: var(--ep-bg-color);
+}
+
+.content-bg {
+  background-color: var(--ep-fill-color-light);
 }
 
 #app {
