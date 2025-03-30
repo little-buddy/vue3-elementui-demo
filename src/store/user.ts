@@ -20,8 +20,8 @@ export const useUserStore = defineStore('user', {
     isLogin: (state: any) => state.userInfo.token,
   },
   actions: {
-    updateUserInfo(info: UserInfo) {
-      this.userInfo = { ...info, ...this.userInfo };
+    updateUserInfo(info: Partial<UserInfo>) {
+      this.userInfo = { ...this.userInfo, ...info };
     },
     clearUserInfo() {
       this.userInfo = {};

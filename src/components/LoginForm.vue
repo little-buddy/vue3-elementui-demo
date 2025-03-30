@@ -28,7 +28,7 @@ const loginInfo = reactive<LoginInfo>({
   username: '',
   password: '',
   imgcode: '',
-  savepassword: false,
+  savepassword: true,
 });
 
 const router = useRouter();
@@ -36,9 +36,7 @@ const router = useRouter();
 async function doSbumit() {
   if (!formRef.value) return;
 
-  const isValid = await formRef.value.validate((valid, fields) => {
-    return valid as boolean;
-  });
+  const isValid = await formRef.value.validate();
 
   if (!isValid) return;
 

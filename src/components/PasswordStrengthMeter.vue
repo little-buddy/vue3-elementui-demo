@@ -344,7 +344,7 @@ export default {
 .Password__strength-meter {
   position: relative;
   height: 3px;
-  background: #ddd;
+  background: var(--ep-menu-border-color);
   margin: 10px auto;
   border-radius: 3px;
 }
@@ -357,7 +357,7 @@ export default {
   height: inherit;
   background: transparent;
   display: block;
-  border-color: #fff;
+  border-color: var(--ep-bg-color);
   border-style: solid;
   border-width: 0 5px;
   position: absolute;

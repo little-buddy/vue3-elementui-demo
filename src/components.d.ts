@@ -72,12 +72,15 @@ declare module 'vue' {
     Logos: typeof import('./components/Logos.vue')['default']
     MessageBoxDemo: typeof import('./components/MessageBoxDemo.vue')['default']
     Password: typeof import('./components/Password.vue')['default']
+    PasswordStrengthMeter: typeof import('./components/PasswordStrengthMeter.vue')['default']
     ProductInfoForm: typeof import('./components/bussiness/ProductInfoForm.vue')['default']
     ProTable: typeof import('./components/ProTable.vue')['default']
     Rep: typeof import('./components/bussiness/dialog/Rep.vue')['default']
     RepId: typeof import('./components/bussiness/dialog/RepId.vue')['default']
+    ResetPwdForm: typeof import('./components/forms/ResetPwdForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    UpdateUserForm: typeof import('./components/forms/UpdateUserForm.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']

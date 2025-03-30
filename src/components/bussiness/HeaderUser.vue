@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ArrowDown } from '@element-plus/icons-vue';
 import { ElMessageBox } from 'element-plus';
+import { watch, watchEffect } from 'vue';
 import { useRouter } from 'vue-router';
 import logo from '~/assets/imgs/login-icon.png';
 import { useUserStore } from '~/store';
@@ -8,8 +9,6 @@ import { useUserStore } from '~/store';
 const router = useRouter();
 
 const userStore = useUserStore();
-
-const { userInfo } = userStore;
 
 function onUser() {
   router.push('/usercenter');
@@ -35,8 +34,6 @@ async function onLogout() {
       type: 'warning',
     });
 
-    console.log(router);
-
     userStore.logout();
   } catch (error) {
     console.log(error.message);
@@ -47,8 +44,8 @@ async function onLogout() {
 <template>
   <el-dropdown trigger="click">
     <span class="el-dropdown-link flex cursor-pointer items-center space-x-2">
-      <el-avatar :src="userInfo.avatar" size="small" />
-      <span> {{ userInfo.name }} </span>
+      <el-avatar :src="userStore.userInfo.avatar" size="small" />
+      <span> {{ userStore.userInfo.name }} </span>
 
       <el-icon class="el-icon--right"><ArrowDown /></el-icon>
     </span>
